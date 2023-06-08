@@ -1,6 +1,6 @@
 const { Product } = require("../model/productModel");
 
-
+// product create controller ------------------
 exports.createProduct = async(req,res)=>{
     try {
         const {name,price,description,createdAt} = req.body;
@@ -28,7 +28,7 @@ exports.createProduct = async(req,res)=>{
 //all products get ---------------
 exports.getProduct = async(req, res) => {
   try {
-    const allProducts = await Product.find();
+    const allProducts = await Product.find({}, 'name price');
     res.status(200).json({
       message: "product get successfully",
       success: true,
